@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from '../Card/Card'
 
 export default function Category({ movieData, categoryData }) {
   return (
@@ -11,7 +12,7 @@ export default function Category({ movieData, categoryData }) {
       <div className="category__content">
         {
           movieData.map((movie) => {
-            return <div></div>
+            return <Card data={movie} />
           })
         }
       </div>
