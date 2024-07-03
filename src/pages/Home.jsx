@@ -1,5 +1,6 @@
 // hooks import
 import React, { useEffect, useState } from 'react'
+import Category from '../components/Category/Category';
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,7 @@ export default function Home() {
 
   return (
     <div className='Home__container'>
-
+      <Category categoryData={categories} />
     </div>
   )
 }
