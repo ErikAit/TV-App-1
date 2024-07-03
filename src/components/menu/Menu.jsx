@@ -1,5 +1,8 @@
 import React from 'react'
 
+// css import
+import './menu-styles/Menu.css'
+
 export default function Menu() {
   return (
     <div className='menu__container'>
@@ -10,11 +13,13 @@ export default function Menu() {
           <div className='bx bx-tv'></div>
           <div className='bx bxs-camera-movie'></div>
           <div className='bx bx-desktop'></div>
-          <div className='bx bx-hearts'></div>
+          <div className='bx bx-heart'></div>
         </div>
 
-        <div className="settings">
-
+        <div className="categories__container">
+          <div className='bx bxs-camera-movie'></div>
+          <div className='bx bx-desktop'></div>
+          <div className='bx bx-heart'></div>
         </div>
 
         <div className="menu__icon">
