@@ -8,18 +8,54 @@ export default function Menu() {
     <div className='menu__container'>
       <div className="menu__content">
         <div className="categories__container">
-          <div className="bx bx-home-alt"></div>
-          <div className='bx bx-search'></div>
-          <div className='bx bx-tv'></div>
-          <div className='bx bxs-camera-movie'></div>
-          <div className='bx bx-desktop'></div>
-          <div className='bx bx-heart'></div>
+          <div className='category'>
+            <div className="bx bx-home-alt"></div>
+            <span>Lorem</span>
+          </div>
+
+          <div className='category'>
+            <div className='bx bx-search'></div>
+            <span>Lorem</span>
+          </div>
+
+          <div className='category'>
+            <div className='bx bx-tv'></div>
+            <span>Lorem</span>
+          </div>
+
+
+          <div className='category'>
+            <div className='bx bxs-camera-movie'></div>
+            <span>Lorem</span>
+          </div>
+
+
+          <div className='category'>
+            <div className='bx bx-desktop'></div>
+            <span>Lorem</span>
+          </div>
+
+          <div className='category'>
+            <div className='bx bx-heart'></div>
+            <span>Lorem</span>
+          </div>
         </div>
 
         <div className="categories__container">
-          <div className='bx bxs-user'></div>
-          <div className='bx bx-cog'></div>
-          <div className='bx bx-power-off'></div>
+          <div className='category'>
+            <div className='bx bxs-user'></div>
+            <span>Lorem</span>
+          </div>
+
+          <div className='category'>
+            <div className='bx bx-cog'></div>
+            <span>Lorem</span>
+          </div>
+
+          <div className='category'>
+            <div className='bx bx-power-off'></div>
+            <span>Lorem</span>
+          </div>
         </div>
 
         <div className="menu__icon">

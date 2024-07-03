@@ -7,6 +7,7 @@
 .menu__container .menu__content {
   width: 10%;
   height: 100%;
+  cursor: pointer;
   transition: all .3s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -23,8 +24,27 @@ background: linear-gradient(90deg, rgba(0,0,0,0.7987570028011204) 18%, rgba(0,0,
   display: grid;
 }
 
-.menu__container .menu__content .categories__container div {
+.menu__container .menu__content .categories__container .category {
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.menu__container .menu__content .categories__container .category div {
   font-size: 28px;
   color: white;
   margin: 15px 0;
+}
+
+.menu__container .menu__content .categories__container .category span {
+  opacity: 0;
+  position: absolute;
+  transition: all .3s ease-in-out;
+}
+
+.menu__container .menu__content:hover .categories__container .category span {
+  left: 20px;
+  margin-left: 20px;
+  opacity: 1;
 }
