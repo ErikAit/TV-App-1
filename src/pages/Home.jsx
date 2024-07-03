@@ -1,6 +1,11 @@
 // hooks import
 import React, { useEffect, useState } from 'react'
+
+// category import
 import Category from '../components/Category/Category';
+
+// css import
+import './Home-css/home.css'
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
