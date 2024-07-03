@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Card() {
+export default function Card({ data }) {
   return (
     <div className='Card'>
 
