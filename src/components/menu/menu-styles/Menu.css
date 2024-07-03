@@ -16,7 +16,7 @@
 
 .menu__container .menu__content:hover {
   background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,0.7987570028011204) 18%, rgba(0,0,0,0.4234068627450981) 100%);
+background: linear-gradient(90deg, rgba(0,0,0,0.8267682072829132) 18%, rgba(0,0,0,0.12088585434173671) 100%);
 }
 
 .menu__container .menu__content .categories__container {
