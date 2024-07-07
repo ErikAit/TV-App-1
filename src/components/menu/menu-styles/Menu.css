@@ -2,7 +2,6 @@
   height: 100vh;
   background: rgb(0,0,0);
   background: linear-gradient(90deg, rgba(0,0,0,0.9640231092436975) 4%, rgba(0,0,0,0.6755077030812324) 100%);
-
 }
 
 .menu__container .menu__content {
@@ -48,4 +47,8 @@ background: linear-gradient(90deg, rgba(0,0,0,0.8267682072829132) 18%, rgba(0,0,
   left: 20px;
   margin-left: 20px;
   opacity: 1;
+}
+
+.nav-link {
+  border-bottom: 4px solid green;
 }

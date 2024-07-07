@@ -2,6 +2,7 @@ import React from 'react'
 
 // css import
 import './menu-styles/Menu.css'
+import { NavLink } from 'react-router-dom'
 
 export default function Menu() {
   return (
@@ -9,34 +10,46 @@ export default function Menu() {
       <div className="menu__content">
         <div className="categories__container">
           <div className='category'>
-            <div className="bx bx-home-alt"></div>
+            <NavLink className='nav-link' to={'/'}>
+              <div className="bx bx-home-alt"></div>
+            </NavLink>
             <span>Lorem</span>
           </div>
 
           <div className='category'>
-            <div className='bx bx-search'></div>
+            <NavLink to={'/'}>
+              <div className='bx bx-search'></div>
+            </NavLink>
             <span>Lorem</span>
           </div>
 
           <div className='category'>
-            <div className='bx bx-tv'></div>
-            <span>Lorem</span>
-          </div>
-
-
-          <div className='category'>
-            <div className='bx bxs-camera-movie'></div>
+            <NavLink to={'/'}>
+              <div className='bx bx-tv'></div>
+            </NavLink>
             <span>Lorem</span>
           </div>
 
 
           <div className='category'>
-            <div className='bx bx-desktop'></div>
+            <NavLink to={'/'}>
+              <div className='bx bxs-camera-movie'></div>
+            </NavLink>
+            <span>Lorem</span>
+          </div>
+
+
+          <div className='category'>
+            <NavLink to={'/'}>
+              <div className='bx bx-desktop'></div>
+            </NavLink>
             <span>Lorem</span>
           </div>
 
           <div className='category'>
-            <div className='bx bx-heart'></div>
+            <NavLink to={'/'}>
+              <div className='bx bx-heart'></div>
+            </NavLink>
             <span>Lorem</span>
           </div>
         </div>
