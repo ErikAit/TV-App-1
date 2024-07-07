@@ -16,3 +16,7 @@
   display: flex;
   gap: 16px;
 }
+
+.category__content::-webkit-scrollbar {
+  display: none;
+}
