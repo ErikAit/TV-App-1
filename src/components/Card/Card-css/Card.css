@@ -2,3 +2,8 @@
   width: 320px;
   height: 500px;
 }
+
+.Card p {
+  color: white;
+  font-size: 20px;
+}
