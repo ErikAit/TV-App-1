@@ -1,8 +1,18 @@
 .category__container {
   height: 99vh;
+  width: 100%;
   overflow-y: scroll;
 }
 
+.category__container div h2 {
+  color: white;
+  font-size: 25px;
+  margin: 20px 0;
+}
+
 .category__content {
+  width: 100%;
+  overflow-x: scroll;
   display: flex;
+  gap: 16px;
 }
