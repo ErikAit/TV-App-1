@@ -9,13 +9,24 @@ import './Category-css/Category.css'
 export default function Category({ movieData, categoryData }) {
   return (
     <div className='category__container'>
-      <div className="category__content">
-        {
-          movieData.map((movie) => {
-            return <Card key={movie.stream_id} data={movie} />
-          })
-        }
-      </div>
+      {
+        categoryData.map((category) => {
+          return (
+            <div key={category.category_id}>
+              <h2>{category.category_name}</h2>
+              <div className="category__content">
+                {
+                  movieData.map((movie) => {
+                    if (movie.category_id === category.category_id) {
+                      return <Card key={movie.stream_id} data={movie} />
+                    }
+                  })
+                }
+              </div>
+            </div>
+          )
+        })
+      }
     </div>
   )
 }
