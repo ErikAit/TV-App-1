@@ -1,6 +1,7 @@
 .Home__container {
   position: absolute;
   top: 0;
+  left: 10%;
   padding: 4px 0 0 0;
   width: 100%;
 }
