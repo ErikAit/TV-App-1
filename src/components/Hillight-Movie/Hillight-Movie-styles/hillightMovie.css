@@ -1,0 +1,6 @@
+.movie_image {
+  width: 1920px;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

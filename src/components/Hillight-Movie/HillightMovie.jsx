@@ -1,7 +1,7 @@
 import React from 'react'
 
 // css import
-// import './Hillight-Movie-styles/hillightMovie.css'
+import './Hillight-Movie-styles/hillightMovie.css'
 
 export default function HillightMovie({ data }) {
   return (
