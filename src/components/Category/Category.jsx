@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 // coponents imports
 import Card from '../Card/Card'
+import { IndexContext } from '../Global-Context/GlobalContext';
 
 // css import
 import './Category-css/Category.css'
 
 export default function Category({ movieData, categoryData }) {
+  const { selectedMovieIndex, getFocusedMovieIndex } = useContext(IndexContext);
+
   return (
     <div className='category__container'>
       {
@@ -16,9 +19,14 @@ export default function Category({ movieData, categoryData }) {
               <h2>{category.category_name}</h2>
               <div className="category__content">
                 {
-                  movieData.map((movie) => {
+                  movieData.map((movie, index) => {
                     if (movie.category_id === category.category_id) {
-                      return <Card key={movie.stream_id} data={movie} />
+                      return <Card
+                        key={movie.stream_id}
+                        data={movie}
+                        selectedMovieIndex={selectedMovieIndex === index}
+                        onClick={() => getFocusedMovieIndex(index)}
+                      />
                     }
                   })
                 }
