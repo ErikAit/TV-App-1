@@ -6,6 +6,7 @@ import Category from '../components/Category/Category';
 
 // css import
 import './Home-css/home.css'
+import HillightMovie from '../components/Hillight-Movie/HillightMovie';
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
@@ -23,6 +24,8 @@ export default function Home() {
 
   return (
     <div className='Home__container'>
+      <HillightMovie data={movies} />
+
       <Category categoryData={categories} movieData={movies} />
     </div>
   )
