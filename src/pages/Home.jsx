@@ -11,6 +11,7 @@ import HillightMovie from '../components/Hillight-Movie/HillightMovie';
 export default function Home() {
   const [categories, setCategories] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch('https://inter.natv.fm/player_api.php?username=rokuappdev&password=20928292684&action=get_vod_categories')
