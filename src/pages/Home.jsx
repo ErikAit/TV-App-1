@@ -7,6 +7,7 @@ import './Home-css/home.css';
 import Category from '../components/Category/Category';
 import HillightMovie from '../components/Hillight-Movie/HillightMovie';
 import Loading from '../components/Loading/Loading';
+import GlobalContext from '../components/Global-Context/GlobalContext';
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
@@ -39,7 +40,7 @@ export default function Home() {
     <div className='Home__container'>
       {loading && <Loading />}
       <HillightMovie data={movies} />
-      <Category categoryData={categories} movieData={movies} />
+      <GlobalContext children={<Category categoryData={categories} movieData={movies} />} />
     </div>
   );
 }

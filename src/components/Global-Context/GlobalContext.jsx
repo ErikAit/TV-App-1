@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function GlobalContext({ children }) {
+  const [selectedMovieIndex, setSelectedMovieIndex] = useState(0);
+
   return (
-    <div className='context'>
+    <>
       {children}
-    </div>
+    </>
   )
 }
