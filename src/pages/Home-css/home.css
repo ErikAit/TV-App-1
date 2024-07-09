@@ -1,7 +1,4 @@
 .Home__container {
-  position: absolute;
-  top: 0;
-  margin-left: 100px;
   width: 94%;
   height: 100vh;
   overflow-x: hidden;
