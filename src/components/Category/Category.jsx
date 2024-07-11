@@ -15,13 +15,13 @@ export default function Category() {
   return (
     <div className='category__container'>
       {
-        categories.map((category) => {
+        categories.slice(0, 30).map((category) => {
           return (
             <div key={category.category_id}>
               <h2>{category.category_name}</h2>
               <div className="category__content">
                 {
-                  movies.map((movie, index) => {
+                  movies.slice(0, 30).map((movie, index) => {
                     if (movie.category_id === category.category_id) {
                       return <Card
                         key={movie.stream_id}
