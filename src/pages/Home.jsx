@@ -15,7 +15,7 @@ export default function Home() {
     <div className='Home__container'>
       {/* {loading && <Loading />} */}
       {/* <HillightMovie data={movies} /> */}
-      {/* <GlobalContext children={<Category categoryData={categories} movieData={movies} />} /> */}
+      <GlobalContext children={<Category />} />
     </div>
   );
 }
