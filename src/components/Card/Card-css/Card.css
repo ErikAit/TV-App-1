@@ -1,14 +1,22 @@
 .Card {
   padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.Card.selectedMovie {
+.Card .selectedMovie {
+  width: 330px;
+  height: 550px;
   border: 1px solid green;
+  position: absolute;
 }
 
 .Card img {
   width: 320px;
   height: 500px;
+  padding-top: 5px;
 }
 
 .Card p {

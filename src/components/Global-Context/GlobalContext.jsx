@@ -6,6 +6,32 @@ export const IndexContext = createContext(null);
 export default function GlobalContext({ children }) {
   const [selectedMovieIndex, setSelectedMovieIndex] = useState(0);
 
+  const [categories, setCategories] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+
+      try {
+        const categoryResponse = await fetch('https://inter.natv.fm/player_api.php?username=rokuappdev&password=20928292684&action=get_vod_categories');
+        const categoryData = await categoryResponse.json();
+        setCategories(categoryData);
+
+        const moviesResponse = await fetch('https://inter.natv.fm/player_api.php?username=rokuappdev&password=20928292684&action=get_vod_streams');
+        const moviesData = await moviesResponse.json();
+        setMovies(moviesData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const getFocusedMovieIndex = (focusedMovieIndex) => {
     setSelectedMovieIndex(focusedMovieIndex);
   }
