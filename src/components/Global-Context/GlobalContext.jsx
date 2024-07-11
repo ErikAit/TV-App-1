@@ -2,6 +2,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 
 export const IndexContext = createContext(null);
+export const AllMoviesContext = createContext(null);
 
 export default function GlobalContext({ children }) {
   const [selectedMovieIndex, setSelectedMovieIndex] = useState(0);
@@ -54,9 +55,11 @@ export default function GlobalContext({ children }) {
 
   return (
     <>
-      <IndexContext.Provider value={{ selectedMovieIndex, getFocusedMovieIndex }}>
-        {children}
-      </IndexContext.Provider>
+      <AllMoviesContext.Provider value={{ categories, movies, loading }}>
+        <IndexContext.Provider value={{ selectedMovieIndex, getFocusedMovieIndex }}>
+          {children}
+        </IndexContext.Provider>
+      </AllMoviesContext.Provider>
     </>
   )
 }
