@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 // css import
 import './menu-styles/Menu.css'
 import { NavLink } from 'react-router-dom'
+import { MenuContext } from '../Global-Context/GlobalContext'
 
 export default function Menu() {
+
+  const menu = useContext(MenuContext);
+
   return (
-    <div className='menu__container'>
-      <div className="menu__content">
+    <div className={`menu__container ${menu ? 'active' : ''}`}>
+      <div className={`menu__content ${menu ? 'active' : ''}`}>
         <div className="categories__container">
           <div className='category'>
             <NavLink className='nav-link' to={'/'}>

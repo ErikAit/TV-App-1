@@ -3,8 +3,8 @@
   height: 100vh;
 }
 
-.menu__container:hover {
-  width: 10%;
+.menu__container.active {
+  width: 20%;
   background: rgb(0,0,0);
   /* background: linear-gradient(90deg, rgba(0,0,0,0.8267682072829132) 18%, rgba(0,0,0,0.12088585434173671) 100%); */
 }
@@ -43,7 +43,7 @@
   transition: all .3s ease-in-out;
 }
 
-.menu__container .menu__content:hover .categories__container .category span {
+.menu__container .menu__content.active .categories__container .category span {
   left: 30px;
   margin-left: 30px;
   opacity: 1;

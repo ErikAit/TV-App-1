@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from 'react';
 
 export const IndexContext = createContext(null);
 export const AllMoviesContext = createContext(null);
+export const MenuContext = createContext(null);
 
 export default function GlobalContext({ children }) {
   const [selectedMovieIndex, setSelectedMovieIndex] = useState(0);
@@ -78,10 +79,12 @@ export default function GlobalContext({ children }) {
   }, [selectedMovieIndex, selectedCategoryIndex, categories, movies]);
 
   return (
-    <AllMoviesContext.Provider value={{ categories, movies, loading }}>
-      <IndexContext.Provider value={{ selectedMovieIndex, getFocusedMovieIndex }}>
-        {children}
-      </IndexContext.Provider>
-    </AllMoviesContext.Provider>
+    <MenuContext.Provider value={menu}>
+      <AllMoviesContext.Provider value={{ categories, movies, loading }}>
+        <IndexContext.Provider value={{ selectedMovieIndex, getFocusedMovieIndex }}>
+          {children}
+        </IndexContext.Provider>
+      </AllMoviesContext.Provider>
+    </MenuContext.Provider>
   );
 }
