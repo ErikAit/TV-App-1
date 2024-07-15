@@ -1,11 +1,12 @@
 // hooks import
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react';
 
 export const IndexContext = createContext(null);
 export const AllMoviesContext = createContext(null);
 
 export default function GlobalContext({ children }) {
   const [selectedMovieIndex, setSelectedMovieIndex] = useState(0);
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0); // New state for category index
 
   const [categories, setCategories] = useState([]);
   const [movies, setMovies] = useState([]);
@@ -24,7 +25,7 @@ export default function GlobalContext({ children }) {
         const moviesData = await moviesResponse.json();
         setMovies(moviesData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
@@ -35,31 +36,48 @@ export default function GlobalContext({ children }) {
 
   const getFocusedMovieIndex = (focusedMovieIndex) => {
     setSelectedMovieIndex(focusedMovieIndex);
-  }
+  };
 
   useEffect(() => {
     const selectMovie = (e) => {
-      if (e.code === 'ArrowRight') {
-        setSelectedMovieIndex(Math.min(selectedMovieIndex + 1, 2000));
-      } else if (e.code === 'ArrowLeft') {
-        setSelectedMovieIndex(Math.min(selectedMovieIndex - 1, 2000));
+      if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+        e.preventDefault();
+        if (e.code === 'ArrowRight') {
+          setSelectedMovieIndex((prevIndex) => Math.min(prevIndex + 1, movies.length - 1));
+        } else if (e.code === 'ArrowLeft') {
+          setSelectedMovieIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+        } else if (e.code === 'ArrowUp') {
+          // Navigate to the previous category if possible
+          setSelectedCategoryIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+          // Set the selected movie index to the first movie in the new category
+          const firstMovieInCategory = movies.findIndex(movie => movie.category_id === categories[selectedCategoryIndex - 1]?.category_id);
+          if (firstMovieInCategory !== -1) {
+            setSelectedMovieIndex(firstMovieInCategory);
+          }
+        } else if (e.code === 'ArrowDown') {
+          // Navigate to the next category if possible
+          setSelectedCategoryIndex((prevIndex) => Math.min(prevIndex + 1, categories.length - 1));
+          // Set the selected movie index to the first movie in the new category
+          const firstMovieInCategory = movies.findIndex(movie => movie.category_id === categories[selectedCategoryIndex + 1]?.category_id);
+          if (firstMovieInCategory !== -1) {
+            setSelectedMovieIndex(firstMovieInCategory);
+          }
+        }
       }
-    }
+    };
 
     document.addEventListener('keydown', selectMovie);
 
     return () => {
-      document.addEventListener('keydown', selectMovie)
-    }
-  }, [selectedMovieIndex])
+      document.removeEventListener('keydown', selectMovie);
+    };
+  }, [selectedMovieIndex, selectedCategoryIndex, categories, movies]);
 
   return (
-    <>
-      <AllMoviesContext.Provider value={{ categories, movies, loading }}>
-        <IndexContext.Provider value={{ selectedMovieIndex, getFocusedMovieIndex }}>
-          {children}
-        </IndexContext.Provider>
-      </AllMoviesContext.Provider>
-    </>
-  )
+    <AllMoviesContext.Provider value={{ categories, movies, loading }}>
+      <IndexContext.Provider value={{ selectedMovieIndex, getFocusedMovieIndex }}>
+        {children}
+      </IndexContext.Provider>
+    </AllMoviesContext.Provider>
+  );
 }
