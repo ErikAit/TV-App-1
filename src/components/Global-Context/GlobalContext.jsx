@@ -10,6 +10,8 @@ export default function GlobalContext({ children }) {
 
   const [categories, setCategories] = useState([]);
   const [movies, setMovies] = useState([]);
+
+  const [menu, setMenu] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -46,6 +48,10 @@ export default function GlobalContext({ children }) {
           setSelectedMovieIndex((prevIndex) => Math.min(prevIndex + 1, movies.length - 1));
         } else if (e.code === 'ArrowLeft') {
           setSelectedMovieIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+
+          if (selectedMovieIndex === 0) {
+            setMenu(true);
+          }
         } else if (e.code === 'ArrowUp') {
           setSelectedCategoryIndex((prevIndex) => Math.max(prevIndex - 1, 0));
 
