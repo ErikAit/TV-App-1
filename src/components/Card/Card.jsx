@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 // css import
 import './Card-css/Card.css'
 
-export default function Card({ data, selectedMovieIndex, onClick }) {
+function Card({ data, selectedMovieIndex, onClick }) {
   return (
     <div className='Card' onClick={onClick}>
       {
@@ -15,3 +15,6 @@ export default function Card({ data, selectedMovieIndex, onClick }) {
     </div>
   )
 }
+
+
+export default memo(Card);
