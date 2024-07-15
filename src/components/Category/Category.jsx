@@ -1,14 +1,14 @@
 
-// components imports
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 
+// components imports
 import Card from '../Card/Card';
 import { AllMoviesContext, IndexContext } from '../Global-Context/GlobalContext';
 
 // css import
 import './Category-css/Category.css';
 
-export default function Category() {
+function Category() {
   const { selectedMovieIndex, getFocusedMovieIndex } = useContext(IndexContext);
   const { categories, movies } = useContext(AllMoviesContext);
 
@@ -38,3 +38,5 @@ export default function Category() {
     </div>
   );
 }
+
+export default memo(Category);
