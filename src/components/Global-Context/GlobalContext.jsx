@@ -48,7 +48,7 @@ export default function GlobalContext({ children }) {
         if (e.code === 'ArrowRight') {
           setSelectedMovieIndex((prevIndex) => Math.min(prevIndex + 1, movies.length - 1));
 
-          if (menu === true && selectedMovieIndex === 0) {
+          if (selectedMovieIndex === 0) {
             setMenu(false);
           }
         } else if (e.code === 'ArrowLeft') {
