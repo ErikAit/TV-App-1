@@ -55,6 +55,7 @@ export default function GlobalContext({ children }) {
           if (selectedMovieIndex < lastMovieInCategoryIndex) {
             setSelectedMovieIndex((prevIndex) => prevIndex + 1);
           }
+          setMenu(false);
         } else if (e.code === 'ArrowLeft') {
           if (selectedMovieIndex > firstMovieInCategoryIndex) {
             setSelectedMovieIndex((prevIndex) => prevIndex - 1);
