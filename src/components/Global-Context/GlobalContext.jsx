@@ -1,5 +1,4 @@
-// hooks import
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState, useRef } from 'react';
 
 export const IndexContext = createContext(null);
 export const AllMoviesContext = createContext(null);
@@ -14,6 +13,8 @@ export default function GlobalContext({ children }) {
 
   const [menu, setMenu] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const movieContainerRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,31 +46,34 @@ export default function GlobalContext({ children }) {
     const selectMovie = (e) => {
       if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
         e.preventDefault();
-        if (e.code === 'ArrowRight') {
-          setSelectedMovieIndex((prevIndex) => Math.min(prevIndex + 1, movies.length - 1));
 
-          if (selectedMovieIndex === 0) {
-            setMenu(false);
+        const categoryMovies = movies.filter(movie => movie.category_id === categories[selectedCategoryIndex]?.category_id);
+        const firstMovieInCategoryIndex = movies.findIndex(movie => movie.category_id === categories[selectedCategoryIndex]?.category_id);
+        const lastMovieInCategoryIndex = firstMovieInCategoryIndex + categoryMovies.length - 1;
+
+        if (e.code === 'ArrowRight') {
+          if (selectedMovieIndex < lastMovieInCategoryIndex) {
+            setSelectedMovieIndex((prevIndex) => prevIndex + 1);
           }
         } else if (e.code === 'ArrowLeft') {
-          setSelectedMovieIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-
-          if (selectedMovieIndex === 0) {
+          if (selectedMovieIndex > firstMovieInCategoryIndex) {
+            setSelectedMovieIndex((prevIndex) => prevIndex - 1);
+          } else if (selectedMovieIndex === firstMovieInCategoryIndex) {
             setMenu(true);
           }
         } else if (e.code === 'ArrowUp') {
-          setSelectedCategoryIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-
-          const firstMovieInCategory = movies.findIndex(movie => movie.category_id === categories[selectedCategoryIndex - 1]?.category_id);
-          if (firstMovieInCategory !== -1) {
-            setSelectedMovieIndex(firstMovieInCategory);
+          if (selectedCategoryIndex > 0) {
+            setSelectedCategoryIndex((prevIndex) => prevIndex - 1);
+            const firstMovieInPrevCategory = movies.findIndex(movie => movie.category_id === categories[selectedCategoryIndex - 1]?.category_id);
+            setSelectedMovieIndex(firstMovieInPrevCategory);
+            setMenu(false);
           }
         } else if (e.code === 'ArrowDown') {
-          setSelectedCategoryIndex((prevIndex) => Math.min(prevIndex + 1, categories.length - 1));
-
-          const firstMovieInCategory = movies.findIndex(movie => movie.category_id === categories[selectedCategoryIndex + 1]?.category_id);
-          if (firstMovieInCategory !== -1) {
-            setSelectedMovieIndex(firstMovieInCategory);
+          if (selectedCategoryIndex < categories.length - 1) {
+            setSelectedCategoryIndex((prevIndex) => prevIndex + 1);
+            const firstMovieInNextCategory = movies.findIndex(movie => movie.category_id === categories[selectedCategoryIndex + 1]?.category_id);
+            setSelectedMovieIndex(firstMovieInNextCategory);
+            setMenu(false);
           }
         }
       }
@@ -82,11 +86,20 @@ export default function GlobalContext({ children }) {
     };
   }, [selectedMovieIndex, selectedCategoryIndex, categories, movies]);
 
+  useEffect(() => {
+    const movieElement = document.querySelector(`.Card[data-index='${selectedMovieIndex}']`);
+    if (movieElement && movieContainerRef.current) {
+      movieContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [selectedMovieIndex]);
+
   return (
     <MenuContext.Provider value={menu}>
       <AllMoviesContext.Provider value={{ categories, movies, loading }}>
         <IndexContext.Provider value={{ selectedMovieIndex, getFocusedMovieIndex }}>
-          {children}
+          <div ref={movieContainerRef}>
+            {children}
+          </div>
         </IndexContext.Provider>
       </AllMoviesContext.Provider>
     </MenuContext.Provider>

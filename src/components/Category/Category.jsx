@@ -1,4 +1,3 @@
-
 import React, { memo, useContext } from 'react';
 
 // components imports
@@ -14,27 +13,26 @@ function Category() {
 
   return (
     <div className='category__container'>
-      {
-        categories.slice(0, 30).map((category, categoryIndex) => (
-          <div key={category.category_id}>
-            <h2>{category.category_name}</h2>
-            <div className="category__content">
-              {
-                movies.map((movie, index) => {
-                  if (movie.category_id === category.category_id) {
-                    return <Card
-                      key={movie.stream_id}
-                      data={movie}
-                      selectedMovieIndex={selectedMovieIndex === index}
-                      onClick={() => getFocusedMovieIndex(index)}
-                    />
-                  }
-                })
+      {categories.slice(0, 30).map((category, categoryIndex) => (
+        <div key={category.category_id}>
+          <h2>{category.category_name}</h2>
+          <div className="category__content">
+            {movies.map((movie, index) => {
+              if (movie.category_id === category.category_id) {
+                return (
+                  <Card
+                    key={movie.stream_id}
+                    data={movie}
+                    selectedMovieIndex={selectedMovieIndex === index}
+                    onClick={() => getFocusedMovieIndex(index)}
+                    index={index}
+                  />
+                );
               }
-            </div>
+            })}
           </div>
-        ))
-      }
+        </div>
+      ))}
     </div>
   );
 }
