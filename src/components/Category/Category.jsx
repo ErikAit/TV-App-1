@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Card from '../Card/Card';
 import './Category-css/Category.css';
 import { useCategoryStore, useMovieStore, useFocusStore } from '../../requests/requests';
@@ -8,10 +8,25 @@ function Category() {
   const { movies, fetchMovies } = useMovieStore();
   const { selectedIndex, focusedCategoryIndex, handleKeyDown } = useFocusStore();
 
+  const listRef = useRef(null);
+
   useEffect(() => {
     fetchCategories();
     fetchMovies();
   }, [fetchCategories, fetchMovies]);
+
+  useEffect(() => {
+    if (listRef.current) {
+      const selectedCard = listRef.current.querySelector('.selected');
+      if (selectedCard) {
+        selectedCard.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'end',
+        });
+      }
+    }
+  }, [selectedIndex, focusedCategoryIndex]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -29,7 +44,7 @@ function Category() {
       {categories.slice(0, 2).map((category, categoryIndex) => (
         <div key={category.category_id}>
           <h2>{category.category_name}</h2>
-          <div className="category__content">
+          <div className="category__content" ref={categoryIndex === focusedCategoryIndex ? listRef : null}>
             {getMoviesByCategory(category.category_id).map((movie, movieIndex) => (
               <Card
                 key={movie.stream_id}

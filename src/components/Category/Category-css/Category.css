@@ -11,7 +11,7 @@
 
 .category__content {
   width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
   display: flex;
   gap: 16px;
 }
