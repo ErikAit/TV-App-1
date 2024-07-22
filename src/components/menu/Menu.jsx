@@ -3,11 +3,13 @@ import React, { useContext } from 'react'
 // css import
 import './menu-styles/Menu.css'
 import { NavLink } from 'react-router-dom'
+import { useFocusStore } from '../../requests/requests'
 
 export default function Menu() {
+  const isFirstSelected = useFocusStore((state) => state.isFirstSelected);
 
   return (
-    <div className='menu__container'>
+    <div className={`menu__container ${isFirstSelected === true ? 'active' : ''}`}>
       <div className='menu__content'>
         <div className="categories__container">
           <div className="bx bx-home-alt"></div>
@@ -69,6 +71,6 @@ export default function Menu() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
