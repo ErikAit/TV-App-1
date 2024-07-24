@@ -41,7 +41,7 @@ function Category() {
 
   return (
     <div className='category__container'>
-      {categories.slice(0, 2).map((category, categoryIndex) => (
+      {categories.slice(0, 4).map((category, categoryIndex) => (
         <div key={category.category_id}>
           <h2>{category.category_name}</h2>
           <div className="category__content" ref={categoryIndex === focusedCategoryIndex ? listRef : null}>
