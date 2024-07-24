@@ -43,32 +43,42 @@ export default function Menu() {
       <div className="open__menu__container">
         <div className="open__menu__content">
           <div>
-            <span>lorem</span>
+            <div>
+              <span>lorem</span>
+            </div>
+            <div>
+              <span>lorem</span>
+            </div>
+            <div>
+              <span>lorem</span>
+            </div>
+            <div>
+              <span>lorem</span>
+            </div>
+            <div>
+              <span>lorem</span>
+            </div>
+            <div>
+              <span>lorem</span>
+            </div>
           </div>
+
           <div>
-            <span>lorem</span>
+            <div>
+              <span>lorem</span>
+            </div>
+            <div>
+              <span>lorem</span>
+            </div>
+            <div>
+              <span>lorem</span>
+            </div>
           </div>
+
           <div>
-            <span>lorem</span>
+
           </div>
-          <div>
-            <span>lorem</span>
-          </div>
-          <div>
-            <span>lorem</span>
-          </div>
-          <div>
-            <span>lorem</span>
-          </div>
-          <div>
-            <span>lorem</span>
-          </div>
-          <div>
-            <span>lorem</span>
-          </div>
-          <div>
-            <span>lorem</span>
-          </div>
+
         </div>
       </div>
     </div >

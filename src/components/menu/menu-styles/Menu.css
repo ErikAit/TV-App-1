@@ -13,9 +13,31 @@
   position: absolute;
   width: 350px;
   height: 100%;
-  top: 0;
+  top: 10px;
   left: -515%;
   transition: all .3s ease-in-out;
+}
+
+.menu__container .open__menu__container .open__menu__content {
+  margin-left: 39px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu__container .open__menu__container .open__menu__content div {
+  padding: 4px 20px;
+  display: grid; 
+}
+
+.menu__container .open__menu__container .open__menu__content div div {
+  height: 57px;
+}
+
+.menu__container .open__menu__container .open__menu__content div div span {
+  color: white;
+  font-size: 28px;
 }
 
 .menu__container .menu__content {
