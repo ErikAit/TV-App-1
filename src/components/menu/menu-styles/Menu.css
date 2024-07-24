@@ -21,7 +21,7 @@
 .menu__container .open__menu__container .open__menu__content {
   margin-top: 10px;
   margin-left: 39px;
-  height: 100%;
+  height: 99%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

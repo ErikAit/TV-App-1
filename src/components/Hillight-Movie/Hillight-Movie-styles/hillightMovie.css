@@ -1,6 +1,27 @@
+.hillight-movie__container {
+  position: relative;
+}
+
 .movie_image {
   width: 1920px;
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+}
+
+.title {
+  z-index: 999;
+  color: white;
+  position: absolute; 
+  font-size: 45px;
+}
+
+.overlay {
+  width: 1920px;
+  height: 100vh;
+  top: 0;
+  position: absolute;
+ background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,0.9472163865546218) 10%, rgba(0,0,0,0.7343312324929971) 43%, rgba(0,0,0,0.5270483193277311) 100%);
 }
