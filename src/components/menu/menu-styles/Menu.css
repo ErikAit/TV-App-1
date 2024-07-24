@@ -13,12 +13,13 @@
   position: absolute;
   width: 350px;
   height: 100%;
-  top: 10px;
+  top: 0;
   left: -515%;
   transition: all .3s ease-in-out;
 }
 
 .menu__container .open__menu__container .open__menu__content {
+  margin-top: 10px;
   margin-left: 39px;
   height: 100%;
   display: flex;
@@ -38,6 +39,11 @@
 .menu__container .open__menu__container .open__menu__content div div span {
   color: white;
   font-size: 28px;
+}
+
+.menu__container .open__menu__container .open__menu__content div div .focused {
+  width: 80px;
+  border-bottom: 5px solid green;
 }
 
 .menu__container .menu__content {
