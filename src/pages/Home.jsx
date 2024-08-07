@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className='Home__container'>
       {/* {loading && <Loading />} */}
-      <HillightMovie />
+      {/* <HillightMovie /> */}
       <Category />
     </div>
   );

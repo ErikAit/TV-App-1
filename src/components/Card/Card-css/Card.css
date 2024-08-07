@@ -25,5 +25,59 @@
 }
 
 .selected {
+  top: 0;
+  left: 0;
+  position: absolute;
   border: 2px solid blue;
+  width: 340px;
+  height: 570px;
+  z-index: 12;
 }
+
+.selected.right {
+  animation: right .2s ease-in-out;
+}
+
+.selected.left {
+  animation: left .2s ease-in-out;
+}
+
+.selected.up {
+  animation: up .2s ease-in-out;
+}
+
+.selected.down {
+  animation: down .2s ease-in-out;
+}
+
+@keyframes right {
+  from {
+    left: -170px;
+  } to {
+     left: 0;
+  }
+}
+
+/* @keyframes up {
+  from {
+    top: 170px;
+  } to {
+     top: 0;
+  }
+} */
+
+@keyframes left {
+  from {
+    transform: translateX(170px);
+  } to {
+     transform: translateX(0);
+  }
+}
+
+/* @keyframes down {
+  from {
+    transform: translateX(170px);
+  } to {
+     transform: translateX(0);
+  }
+} */

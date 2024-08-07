@@ -12,6 +12,7 @@
 .category__content {
   width: 100%;
   overflow-x: auto;
+  position: relative;
   display: flex;
   gap: 16px;
 }

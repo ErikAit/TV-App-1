@@ -22,7 +22,7 @@ function Category() {
         selectedCard.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
-          inline: 'end',
+          inline: 'center',
         });
       }
     }
