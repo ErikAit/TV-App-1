@@ -6,13 +6,6 @@
   align-items: center;
 }
 
-.Card .selectedMovie {
-  width: 330px;
-  height: 550px;
-  border: 1px solid green;
-  position: absolute;
-}
-
 .Card img {
   width: 320px;
   height: 500px;
@@ -28,7 +21,8 @@
   top: 0;
   left: 0;
   position: absolute;
-  border: 2px solid blue;
+  border: 2px solid white;
+  border-radius: 12px;
   width: 340px;
   height: 570px;
   z-index: 999;

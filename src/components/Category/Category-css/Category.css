@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   transition: all .3s;
+  cursor: pointer;
 }
 
 .category__container div h2:hover {

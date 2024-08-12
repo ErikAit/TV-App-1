@@ -5,7 +5,20 @@
 }
 
 .menu__container.active .open__menu__container {
+  animation: .4s menu;
   left: 0;
+}
+
+@keyframes menu {
+  0% {
+    opacity: 0;
+  } 
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .menu__container .open__menu__container {
@@ -47,7 +60,9 @@
 .menu__container .open__menu__container .open__menu__content div div .focused {
   width: 100px;
   opacity: .8;
-  border-bottom: 5px solid green;
+  margin-left: 12px;
+  transition: all .3s;
+  border-bottom: 2px solid green;
 }
 
 .menu__container .menu__content {
