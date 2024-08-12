@@ -7,6 +7,22 @@
   color: white;
   font-size: 25px;
   margin: 20px 0;
+  display: flex;
+  align-items: center;
+  transition: all .3s;
+}
+
+.category__container div h2:hover {
+  opacity: .8;
+}
+
+.category__container div h2 i {
+  font-size: 40px;
+  transition: all .3s;
+}
+
+.category__container div h2:hover i {
+  margin-left: 15px;
 }
 
 .category__content {
