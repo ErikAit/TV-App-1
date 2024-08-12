@@ -19,11 +19,13 @@ function Category() {
     if (listRef.current) {
       const selectedCard = listRef.current.querySelector('.selected');
       if (selectedCard) {
-        selectedCard.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center',
-        });
+        setTimeout(() => {
+          selectedCard.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center',
+          });
+        }, 8)
       }
     }
   }, [selectedIndex, focusedCategoryIndex]);

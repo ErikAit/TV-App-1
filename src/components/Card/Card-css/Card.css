@@ -31,7 +31,7 @@
   border: 2px solid blue;
   width: 340px;
   height: 570px;
-  z-index: 12;
+  z-index: 999;
 }
 
 .selected.right {
@@ -52,19 +52,20 @@
 
 @keyframes right {
   from {
-    left: -170px;
+     transform: translateX(-170px);
   } to {
-     left: 0;
+     transform: translateX(0);
   }
 }
 
-/* @keyframes up {
+@keyframes up {
   from {
-    top: 170px;
-  } to {
-     top: 0;
+    transform: translateY(170px);
   }
-} */
+  to {
+    transform: translateY(0);
+  }
+}
 
 @keyframes left {
   from {
@@ -74,10 +75,10 @@
   }
 }
 
-/* @keyframes down {
+@keyframes down {
   from {
-    transform: translateX(170px);
+    transform: translateY(-170px);
   } to {
-     transform: translateX(0);
+     transform: translateY(0);
   }
-} */
+}
