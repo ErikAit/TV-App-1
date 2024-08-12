@@ -6,13 +6,15 @@ function Card({ data, selectedMovieIndex }) {
   const direction = useFocusStore((state) => state.direction);
 
   return (
-    <div className={`Card`}>
-      {selectedMovieIndex && (
-        <div className={`selected ${direction}`}></div>
-      )}
-      <img src={data.stream_icon} alt="movie poster" />
-      <p>{data.name}</p>
-    </div>
+    <>
+      <div className={`Card`}>
+        {selectedMovieIndex && (
+          <div className={`selected ${direction}`}></div>
+        )}
+        <img src={data.stream_icon} alt="movie poster" />
+        <p>{data.name}</p>
+      </div>
+    </>
   );
 }
 
