@@ -3,16 +3,20 @@ import { create } from "zustand";
 export const useCategoryStore = create((set) => ({
   categories: [],
   fetchCategories: async () => {
-    const response = await fetch('https://inter.natv.fm/player_api.php?username=rokuappdev&password=20928292684&action=get_vod_categories');
+    const response = await fetch('http://smartersapp.vip/player_api.php?username=13p9dl2r0d&password=eoqc714tty&type=m3u_plus&output=ts&action=get_vod_categories');
     const categoriesData = await response.json();
     set({ categories: categoriesData });
   },
 }));
 
+
+// http://smartersapp.vip/get.php?username=13p9dl2r0d&password=eoqc714tty&type=m3u_plus&output=ts
+
+
 export const useMovieStore = create((set) => ({
   movies: [],
   fetchMovies: async () => {
-    const response = await fetch('https://inter.natv.fm/player_api.php?username=rokuappdev&password=20928292684&action=get_vod_streams');
+    const response = await fetch('http://smartersapp.vip/player_api.php?username=13p9dl2r0d&password=eoqc714tty&type=m3u_plus&output=ts&action=get_vod_streams');
     const moviesData = await response.json();
     set({ movies: moviesData });
   },

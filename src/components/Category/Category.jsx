@@ -45,7 +45,7 @@ function Category() {
     <div className='category__container'>
       {categories.slice(0, 4).map((category, categoryIndex) => (
         <div key={category.category_id}>
-          <h2>{category.category_name}</h2>
+          <h2>{category.category_name} <i className='bx bx-chevron-right'></i></h2>
           <div className="category__content" ref={categoryIndex === focusedCategoryIndex ? listRef : null}>
             {getMoviesByCategory(category.category_id).map((movie, movieIndex) => (
               <Card
