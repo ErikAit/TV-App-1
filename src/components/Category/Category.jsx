@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Card from '../Card/Card';
 import './Category-css/Category.css';
 import { useCategoryStore, useMovieStore, useFocusStore } from '../../requests/requests';
@@ -6,7 +6,7 @@ import { useCategoryStore, useMovieStore, useFocusStore } from '../../requests/r
 function Category() {
   const { categories, fetchCategories } = useCategoryStore();
   const { movies, fetchMovies } = useMovieStore();
-  const { selectedIndex, focusedCategoryIndex, handleKeyDown } = useFocusStore();
+  const { selectedIndex, focusedCategoryIndex, handleKeyDown, sliceStart, sliceEnd } = useFocusStore();
 
   const listRef = useRef(null);
 
@@ -22,7 +22,7 @@ function Category() {
         setTimeout(() => {
           selectedCard.scrollIntoView({
             behavior: 'smooth',
-            block: 'nearest',
+            block: 'center',
             inline: 'center',
           });
         }, 8)
@@ -37,8 +37,18 @@ function Category() {
     };
   }, [handleKeyDown]);
 
+  // useEffect(() => {
+  //   if (prevIndexRef.current = selectedIndex) {
+  //     setSliceEnd(prevValue => prevValue + 1);
+  //   } 
+  //   if (prevIndexRef.current - selectedIndex >= 10) {
+  //     setSliceEnd(prevValue => prevValue - 1);
+  //   }
+  //   prevIndexRef.current = selectedIndex;
+  // }, [selectedIndex]);
+
   const getMoviesByCategory = (categoryId) => {
-    return movies.filter(movie => movie.category_id === categoryId);
+    return movies.filter(movie => movie.category_id === categoryId).slice(sliceStart, sliceEnd);
   };
 
   return (

@@ -42,12 +42,18 @@ export const useFocusStore = create((set, get) => ({
   isFirstSelected: false,
   focusedTitle: 0,
   direction: '',
+  sliceStart: 0,
+  sliceEnd: 12,
+  prevIndex: 0,
   setSelectedIndex: (index) => set({ selectedIndex: index }),
   setFocusedCategoryIndex: (index) => set({ focusedCategoryIndex: index }),
   setFocusedTitle: (index) => set({ focusedTitle: index }),
   setDirection: (value) => set({ direction: value }),
+  setSliceStart: (value) => set({ sliceStart: value }),
+  setSliceEnd: (value) => set({ sliceEnd: value }),
+  setPrevIndex: (value) => set({ prevIndex: value }),
   handleKeyDown: (e) => {
-    const { selectedIndex, focusedCategoryIndex, isFirstSelected, focusedTitle, direction } = get();
+    const { selectedIndex, focusedCategoryIndex, isFirstSelected, focusedTitle, direction, sliceStart, sliceEnd, prevIndex } = get();
     const { categories } = useCategoryStore.getState();
     const { movies } = useMovieStore.getState();
     const { menuTitles } = useMenuTitle.getState();
@@ -64,6 +70,10 @@ export const useFocusStore = create((set, get) => ({
       if (e.key === 'ArrowLeft') {
         set({ direction: 'left' });
 
+        if (selectedIndex > 5) {
+          set({ sliceEnd: sliceEnd - 1 })
+        }
+
         if (selectedIndex === 0) {
           set({ isFirstSelected: true });
           set({ selectedIndex: -1 });
@@ -74,6 +84,10 @@ export const useFocusStore = create((set, get) => ({
         }
       } else if (e.key === 'ArrowRight') {
         set({ direction: 'right' });
+
+        if (selectedIndex - prevIndex >= 1) {
+          set({ sliceEnd: sliceEnd + 1 })
+        }
 
         setTimeout(() => {
           set({ selectedIndex: Math.min(selectedIndex + 1, focusedCategoryMovies.length - 1) });

@@ -28,6 +28,7 @@
 
 .category__content {
   width: 100%;
+  height: 600px;
   overflow-x: auto;
   position: relative;
   display: flex;
