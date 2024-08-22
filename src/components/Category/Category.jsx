@@ -17,15 +17,15 @@ function Category() {
 
   useEffect(() => {
     if (listRef.current) {
-      const selectedCard = listRef.current.querySelector('.selected');
+      const selectedCard = listRef.current.querySelector('.scroll');
       if (selectedCard) {
-        setTimeout(() => {
-          selectedCard.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'center',
-          });
-        }, 8)
+        // setTimeout(() => {
+        selectedCard.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'end',
+        });
+        // }, 8)
       }
     }
   }, [selectedIndex, focusedCategoryIndex]);

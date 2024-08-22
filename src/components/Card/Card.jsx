@@ -9,7 +9,10 @@ function Card({ data, selectedMovieIndex }) {
     <>
       <div className={`Card`}>
         {selectedMovieIndex && (
-          <div className={`selected ${direction}`}></div>
+          <>
+            <div className={`selected ${direction}`}></div>
+            <div className="scroll"></div>
+          </>
         )}
         <img src={data.stream_icon} alt="movie poster" />
         <p>{data.name}</p>

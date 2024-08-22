@@ -71,7 +71,9 @@ export const useFocusStore = create((set, get) => ({
         set({ direction: 'left' });
 
         if (selectedIndex > 5) {
-          set({ sliceEnd: sliceEnd - 1 })
+          setTimeout(() => {
+            set({ sliceEnd: sliceEnd - 1 })
+          }, 100)
         }
 
         if (selectedIndex === 0) {
@@ -86,7 +88,9 @@ export const useFocusStore = create((set, get) => ({
         set({ direction: 'right' });
 
         if (selectedIndex - prevIndex >= 1) {
-          set({ sliceEnd: sliceEnd + 1 })
+          setTimeout(() => {
+            set({ sliceEnd: sliceEnd + 1 })
+          }, 100);
         }
 
         setTimeout(() => {

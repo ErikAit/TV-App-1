@@ -44,6 +44,12 @@
   animation: down .2s ease-in-out;
 }
 
+.scroll {
+  width: 380px;
+  height: 560px;
+  position: absolute;
+}
+
 @keyframes right {
   from {
      transform: translateX(-170px);
