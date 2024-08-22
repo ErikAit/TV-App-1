@@ -10,6 +10,7 @@
   width: 320px;
   height: 500px;
   padding-top: 5px;
+  border-radius: 30px;
 }
 
 .Card p {
@@ -22,7 +23,7 @@
   left: 0;
   position: absolute;
   border: 2px solid white;
-  border-radius: 12px;
+  border-radius: 30px;
   width: 340px;
   height: 560px;
   z-index: 999;
