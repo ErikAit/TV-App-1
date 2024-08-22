@@ -53,6 +53,7 @@ export const useFocusStore = create((set, get) => ({
   setSliceEnd: (value) => set({ sliceEnd: value }),
   setPrevIndex: (value) => set({ prevIndex: value }),
   handleKeyDown: (e) => {
+
     const { selectedIndex, focusedCategoryIndex, isFirstSelected, focusedTitle, direction, sliceStart, sliceEnd, prevIndex } = get();
     const { categories } = useCategoryStore.getState();
     const { movies } = useMovieStore.getState();
@@ -79,15 +80,19 @@ export const useFocusStore = create((set, get) => ({
         if (selectedIndex === 0) {
           set({ isFirstSelected: true });
           set({ selectedIndex: -1 });
-        } else {
+        }
+
+        else {
           setTimeout(() => {
             set({ selectedIndex: Math.max(selectedIndex - 1, 0) });
           }, 200);
         }
-      } else if (e.key === 'ArrowRight') {
+      }
+
+      else if (e.key === 'ArrowRight') {
         set({ direction: 'right' });
 
-        if (selectedIndex - prevIndex >= 1) {
+        if (selectedIndex >= 11) {
           setTimeout(() => {
             set({ sliceEnd: sliceEnd + 1 })
           }, 100);
@@ -101,35 +106,39 @@ export const useFocusStore = create((set, get) => ({
           set({ selectedIndex: 0 });
         }
         set({ isFirstSelected: false });
-      } else if (e.key === 'ArrowUp') {
+      }
+
+      else if (e.key === 'ArrowUp') {
         set({ direction: 'up' });
 
         if (isFirstSelected) {
-          if (focusedTitle > 0) {
-            setTimeout(() => {
-              set({ focusedTitle: focusedTitle - 1 });
-            }, 200)
-          }
-        } else if (focusedCategoryIndex > 0) {
+          setTimeout(() => {
+            set({ focusedTitle: Math.max(focusedTitle - 1, 0) });
+          }, 200)
+        }
+
+        else if (focusedCategoryIndex > 0) {
           const newCategoryIndex = focusedCategoryIndex - 1;
           const newCategoryMovies = getMoviesByCategory(categories[newCategoryIndex].category_id);
           set({ focusedCategoryIndex: newCategoryIndex });
           set({ selectedIndex: Math.min(selectedIndex, newCategoryMovies.length - 1) });
         }
-      } else if (e.key === 'ArrowDown') {
+      }
+
+      else if (e.key === 'ArrowDown') {
         set({ direction: 'down' });
 
         if (isFirstSelected) {
-          if (focusedTitle < menuTitles.length - 1) {
-            setTimeout(() => {
-              set({ focusedTitle: focusedTitle + 1 });
-            }, 200)
-          }
-        } else if (focusedCategoryIndex < categories.length - 1) {
+          setTimeout(() => {
+            set({ focusedTitle: Math.min(focusedTitle + 1, menuTitles.length - 1) });
+          }, 200)
+        }
+
+        else if (focusedCategoryIndex < categories.length - 1) {
           const newCategoryIndex = focusedCategoryIndex + 1;
           const newCategoryMovies = getMoviesByCategory(categories[newCategoryIndex].category_id);
           set({ focusedCategoryIndex: newCategoryIndex });
-          set({ selectedIndex: Math.min(selectedIndex, newCategoryMovies.length - 1) });
+          set({ selectedIndex: Math.min(selectedIndex - selectedIndex, newCategoryMovies.length - 1) });
         }
       }
     }

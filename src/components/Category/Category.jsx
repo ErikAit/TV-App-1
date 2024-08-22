@@ -37,16 +37,6 @@ function Category() {
     };
   }, [handleKeyDown]);
 
-  // useEffect(() => {
-  //   if (prevIndexRef.current = selectedIndex) {
-  //     setSliceEnd(prevValue => prevValue + 1);
-  //   } 
-  //   if (prevIndexRef.current - selectedIndex >= 10) {
-  //     setSliceEnd(prevValue => prevValue - 1);
-  //   }
-  //   prevIndexRef.current = selectedIndex;
-  // }, [selectedIndex]);
-
   const getMoviesByCategory = (categoryId) => {
     return movies.filter(movie => movie.category_id === categoryId).slice(sliceStart, sliceEnd);
   };
