@@ -52,6 +52,7 @@ function Category() {
                 key={movie.stream_id}
                 data={movie}
                 selectedMovieIndex={focusedCategoryIndex === categoryIndex && selectedIndex === movieIndex}
+                index={selectedIndex}
               />
             ))}
           </div>
