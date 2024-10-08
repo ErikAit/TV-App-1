@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react'
 export default function FilmInfoPage() {
   const [v, setV] = useState([]);
 
+  const username = '13p9dl2r0d';
+  const password = 'eoqc714tty';
+
   useEffect(() => {
-    fetch(`http://smartersapp.vip/player_api.php?username=13p9dl2r0d&password=eoqc714tty&action=get_vod_info&vod_id=${location.href.split('/?')[1]}`)
+    fetch(`http://smartersapp.vip/player_api.php?username=${username}&password=${password}&action=get_vod_info&vod_id=${location.href.split('/?')[1]}`)
       .then((res) => res.json())
       .then((data) => setV([data.info]));
   }, [])
