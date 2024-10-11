@@ -9,8 +9,6 @@ function Category() {
   const { movies, fetchMovies } = useMovieStore();
   const { selectedIndex, focusedCategoryIndex, handleKeyDown, sliceStart, sliceEnd } = useFocusStore();
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   const listRef = useRef(null);
 
   useEffect(() => {
@@ -45,6 +43,7 @@ function Category() {
   };
 
   const navigate = useNavigate();
+  console.log(selectedIndex);
 
   return (
     <div className='category__container'>
@@ -53,11 +52,7 @@ function Category() {
           <h2>{category.category_name} <i className='bx bx-chevron-right'></i></h2>
           <div className="category__content" ref={categoryIndex === focusedCategoryIndex ? listRef : null}>
             {getMoviesByCategory(category.category_id).map((movie, movieIndex) => {
-              return <div key={movie.stream_id} tabIndex={0} onKeyDown={(e) => {
-                if (e.code === 'Enter') {
-                  navigate(`/info/?${movie.stream_id}`)
-                }
-              }}>
+              return <div key={movie.stream_id}>
                 <Card
                   data={movie}
                   selectedMovieIndex={focusedCategoryIndex === categoryIndex && selectedIndex === movieIndex}
