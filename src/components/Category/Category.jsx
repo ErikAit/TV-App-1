@@ -2,11 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import Card from '../Card/Card';
 import './Category-css/Category.css';
 import { useCategoryStore, useMovieStore, useFocusStore } from '../../requests/requests';
+import { useNavigate } from 'react-router-dom';
 
 function Category() {
   const { categories, fetchCategories } = useCategoryStore();
   const { movies, fetchMovies } = useMovieStore();
   const { selectedIndex, focusedCategoryIndex, handleKeyDown, sliceStart, sliceEnd } = useFocusStore();
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const listRef = useRef(null);
 
@@ -41,20 +44,28 @@ function Category() {
     return movies.filter(movie => movie.category_id === categoryId).slice(sliceStart, sliceEnd);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className='category__container'>
       {categories.slice(0, 4).map((category, categoryIndex) => (
         <div key={category.category_id}>
           <h2>{category.category_name} <i className='bx bx-chevron-right'></i></h2>
           <div className="category__content" ref={categoryIndex === focusedCategoryIndex ? listRef : null}>
-            {getMoviesByCategory(category.category_id).map((movie, movieIndex) => (
-              <Card
-                key={movie.stream_id}
-                data={movie}
-                selectedMovieIndex={focusedCategoryIndex === categoryIndex && selectedIndex === movieIndex}
-                index={selectedIndex}
-              />
-            ))}
+            {getMoviesByCategory(category.category_id).map((movie, movieIndex) => {
+              return <div key={movie.stream_id} tabIndex={0} onKeyDown={(e) => {
+                if (e.code === 'Enter') {
+                  navigate(`/info/?${movie.stream_id}`)
+                }
+              }}>
+                <Card
+                  data={movie}
+                  selectedMovieIndex={focusedCategoryIndex === categoryIndex && selectedIndex === movieIndex}
+                  index={selectedIndex}
+                  categoryIndex={categoryIndex}
+                />
+              </div>
+            })}
           </div>
         </div>
       ))}

@@ -1,22 +1,13 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import './Card-css/Card.css';
 import { useFocusStore } from '../../requests/requests';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
-function Card({ data, selectedMovieIndex }) {
+function Card({ data, selectedMovieIndex, index, categoryIndex }) {
   const direction = useFocusStore((state) => state.direction);
-  const navigate = useNavigate();
-
-  const openInfoPage = (event) => {
-    // if (event.code === 'Enter') {
-    navigate(`info/?${data.stream_id}`)
-    // }
-  }
 
   return (
     <>
-      <div className={`Card`} onClick={openInfoPage}>
+      <div className={`Card`}>
         {selectedMovieIndex && (
           <>
             <div className={`selected ${direction}`}></div>
